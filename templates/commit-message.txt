@@ -1,0 +1,30 @@
+TICKET-XXX: 
+
+# ─────────────────────────────────────────────────────────────────────
+# SUBJECT LINE (above)
+# ─────────────────────────────────────────────────────────────────────
+# - Start with the ticket reference (e.g., TICKET-35: )
+# - Use imperative mood ("Add" not "Added" or "Adds")
+# - Keep under 72 characters (including ticket prefix)
+# - Capitalise first word after prefix
+# - No trailing period
+#
+# ─────────────────────────────────────────────────────────────────────
+# BODY (optional - add below the subject, separated by blank line)
+# ─────────────────────────────────────────────────────────────────────
+# - Explain WHY, not WHAT (the diff shows what changed)
+# - Provide context future readers will need
+# - Note trade-offs or alternatives considered
+# - Wrap lines at 72 characters
+#
+# ─────────────────────────────────────────────────────────────────────
+# FOOTER (optional - add at end, separated by blank line)
+# ─────────────────────────────────────────────────────────────────────
+# - BREAKING CHANGE: description of breaking change
+# - Co-authored-by: Name <email@example.com>
+# - Refs: TICKET-XX, TICKET-YY (related tickets)
+#
+# ─────────────────────────────────────────────────────────────────────
+# To use this template by default:
+#   git config commit.template templates/commit-message.txt
+# ─────────────────────────────────────────────────────────────────────
