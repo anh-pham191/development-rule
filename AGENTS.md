@@ -97,5 +97,6 @@ This repository follows the convention documented in [`knowledge/process/git-com
 - [`agents/skills/code-quality/SKILL.md`](./agents/skills/code-quality/SKILL.md) — code-quality principles.
 - [`knowledge/process/git-commits.md`](./knowledge/process/git-commits.md) — commit conventions.
 - [`knowledge/process/definition-of-ready.md`](./knowledge/process/definition-of-ready.md) — readiness gate before implementation.
+- [`knowledge/process/request-to-implementation-flow.md`](./knowledge/process/request-to-implementation-flow.md) — mandatory flow from user request to implementation (plan → interrogate → plan with superpowers → review → subagent execution).
 - [`knowledge/philosophy/agentic-development.md`](./knowledge/philosophy/agentic-development.md) — the framing principles for agent-assisted work.
 - [`knowledge/philosophy/code-review.md`](./knowledge/philosophy/code-review.md) — review philosophy and the four-level severity model.
