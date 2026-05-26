@@ -95,6 +95,7 @@ This repository follows the convention documented in [`knowledge/process/git-com
 - [`agents/skills/skill-creator/SKILL.md`](./agents/skills/skill-creator/SKILL.md) — how to create skills.
 - [`agents/skills/agent-safety/SKILL.md`](./agents/skills/agent-safety/SKILL.md) — safety guardrails (read this).
 - [`agents/skills/code-quality/SKILL.md`](./agents/skills/code-quality/SKILL.md) — code-quality principles.
+- [`agents/skills/milestones/SKILL.md`](./agents/skills/milestones/SKILL.md) — turn requirements into a repo-authoritative `MILESTONES.md` a fresh agent can pick up.
 - [`knowledge/process/git-commits.md`](./knowledge/process/git-commits.md) — commit conventions.
 - [`knowledge/process/definition-of-ready.md`](./knowledge/process/definition-of-ready.md) — readiness gate before implementation.
 - [`knowledge/process/request-to-implementation-flow.md`](./knowledge/process/request-to-implementation-flow.md) — mandatory flow from user request to implementation (plan → interrogate → plan with superpowers → review → subagent execution).
