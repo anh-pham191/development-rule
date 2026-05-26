@@ -87,7 +87,14 @@ Solve the problem at hand without unnecessary complexity. We value simplicity ov
 
 When optimisation requires sacrificing clarity, accompany it with a comment explaining why the trade-off was made.
 
-### 12. Well-Commented
+### 12. Predictable
+
+Same input, same output. The same call should not behave differently on the second run.
+
+- ✓ DO: Initialise every local before reading it; make cleanup paths idempotent (`free(NULL)` is safe by design); avoid global mutable state; pass clocks and randomness as parameters when testability matters
+- ✗ DON'T: Rely on the contents of uninitialised memory; let a function's behaviour depend on a hidden `static` cache; depend on undefined evaluation order in expressions like `f(i++, i++)`
+
+### 13. Well-Commented
 
 Well-written code is self-evident about *what* it does. Comments add value when they explain *why*: the context, constraints, or reasoning that isn't obvious from the code itself.
 

@@ -214,6 +214,7 @@ mypackage/
 #' @export
 slug <- function(x) {
   stopifnot(is.character(x))
+  # The `x = _` named placeholder requires R >= 4.2.
   x |>
     stringi::stri_trans_general("Latin-ASCII") |>
     tolower() |>

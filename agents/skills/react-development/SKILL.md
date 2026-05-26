@@ -78,6 +78,16 @@ Start simple, add machinery when concrete pain appears.
 - DO: `useState` first, reach for context or libraries when justified
 - DON'T: Adopt Redux on day one of a five-screen app
 
+### 13. Predictable
+Same props + state should produce the same output. No render-time surprises.
+- DO: Pure render functions; stable list keys; treat props and state as immutable
+- DON'T: Mutate state in place; read/write the DOM directly inside render
+
+### 14. Well-Commented
+Comments explain *why*, not what the JSX renders.
+- DO: Note why an effect has an unusual dep list; justify a `useMemo` with measured cost
+- DON'T: `// render the button`; restate the component name
+
 ## Component Composition
 
 Keep components small. Compose with `children` and dedicated slot props rather than configuration explosions.

@@ -102,7 +102,14 @@ Solve the problem at hand without unnecessary complexity. We value simplicity ov
 
 When optimisation requires sacrificing clarity, accompany it with a comment explaining why the trade-off was made.
 
-### 13. Well-Commented
+### 13. Predictable
+
+Components should behave the same way given the same props and state. Surprises break user trust and complicate debugging.
+
+- ✓ DO: Pure render functions; stable list keys; idempotent reducers; treat props and state as immutable; derive values during render so React's diffing stays consistent
+- ✗ DON'T: Mutate props or state in place (`state.items.push(...)`); read or write the DOM directly inside render; rely on render-order side effects between sibling components
+
+### 14. Well-Commented
 
 Well-written components are self-evident about *what* they render. Comments add value when they explain *why*: the constraint, the workaround, the design choice that isn't obvious from the JSX.
 

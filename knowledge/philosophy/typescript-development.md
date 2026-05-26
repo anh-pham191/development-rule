@@ -2,7 +2,7 @@
 
 This codebase follows these core principles to ensure clean, maintainable, and type-safe TypeScript.
 
-**Assumptions:** This guide assumes TypeScript 5.x with `strict: true` (ideally extending `@tsconfig/strictest` or equivalent), ES modules with `NodeNext` or `Bundler` module resolution, and `tsc --noEmit` running in CI on every commit. ESLint with `@typescript-eslint/strict-type-checked` and Prettier are expected to run cleanly. The principles apply equally to front-end (browser), Node.js, and library code — what changes is the runtime, not the type discipline. For framework-specific guidance, see [Vue Development Philosophy](vue-development.md) or the relevant framework doc.
+**Assumptions:** This guide assumes TypeScript 5.x with `strict: true` (ideally extending `@tsconfig/strictest` or equivalent), ES modules with `NodeNext` or `Bundler` module resolution, and `tsc --noEmit` running in CI on every commit. ESLint with `@typescript-eslint/strict-type-checked` and Prettier are expected to run cleanly. The principles apply equally to front-end (browser), Node.js, and library code — what changes is the runtime, not the type discipline. For framework-specific guidance, see [React Development Philosophy](react-development.md), [Vue Development Philosophy](vue-development.md), or [Node.js Development Philosophy](node-development.md).
 
 ### 1. Strict by Default
 

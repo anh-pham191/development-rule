@@ -129,10 +129,6 @@ Extending `@tsconfig/strictest` is a reasonable shortcut — but read what it en
 Model variant data with a literal discriminant. The compiler enforces totality.
 
 ```ts
-type Result<T, E> =
-  | { kind: "ok"; value: T }
-  | { kind: "err"; error: E };
-
 type FetchState =
   | { status: "idle" }
   | { status: "loading" }

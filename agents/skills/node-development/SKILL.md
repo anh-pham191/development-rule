@@ -304,10 +304,10 @@ Minimal `package.json` for a modern ESM Node.js app:
   "type": "module",
   "engines": { "node": ">=22.0.0" },
   "scripts": {
-    "dev": "node --watch --env-file=.env src/server.ts",
+    "dev": "tsx watch --env-file=.env src/server.ts",
     "build": "tsc -p tsconfig.build.json",
     "start": "node dist/server.js",
-    "test": "node --test --experimental-test-coverage",
+    "test": "node --test",
     "lint": "eslint . && prettier --check ."
   },
   "dependencies": {

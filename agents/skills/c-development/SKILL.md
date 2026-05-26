@@ -68,7 +68,12 @@ Rules serve the code, not the reverse.
 - DO: Profile before optimising; isolate clever code behind a clean interface
 - DON'T: Micro-optimise on a hunch
 
-### 12. Well-Commented
+### 12. Predictable
+Same input, same output. No reliance on uninitialised memory or hidden state.
+- DO: Initialise every local; make cleanup paths idempotent; pass clocks/randomness as parameters
+- DON'T: Let a `static` cache change behaviour between calls; depend on undefined evaluation order
+
+### 13. Well-Commented
 Explain *why*, not *what*.
 - DO: Document ownership, lifetime, and invariants
 - DON'T: Write `/* increment i */` above `i++`
