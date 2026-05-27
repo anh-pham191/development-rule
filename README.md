@@ -20,7 +20,7 @@ This repository separates **Knowledge** (for humans) from **Agents** (for AI).
 
 | Directory | Purpose |
 |-----------|---------|
-| [`agents/skills/`](./agents/skills/) | Task-specific instructions: `agent-safety`, `code-quality`, `skill-creator`, `adr-documentation`, per-language skills (`go-development`, `php-development`, `python-development`, `rust-development`, `r-development`, `c-development`, `typescript-development`, `node-development`, `react-development`, `vue-development`), and infrastructure-as-code skills (`terraform-development`, `aws-foundations`, `aws-networking`, `aws-compute`, `aws-data`, `aws-observability-cost`) |
+| [`agents/skills/`](./agents/skills/) | Task-specific instructions: `agent-safety`, `code-quality`, `skill-creator`, `adr-documentation`, `requirements-elicitation`, `milestones`, per-language skills (`go-development`, `php-development`, `python-development`, `rust-development`, `r-development`, `c-development`, `typescript-development`, `node-development`, `react-development`, `vue-development`), and infrastructure-as-code skills (`terraform-development`, `aws-foundations`, `aws-networking`, `aws-compute`, `aws-data`, `aws-observability-cost`) |
 
 ### Templates
 
