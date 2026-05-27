@@ -232,14 +232,16 @@ provider "aws" {
   }
 }
 
-# Required tags: owner, env, cost-centre, managed-by.
+# Required tags: owner, env, cost-centre, managed-by — enforce every one.
 resource "aws_organizations_policy" "required_tags" {
   name = "required-tags"
   type = "TAG_POLICY"
   content = jsonencode({
     tags = {
       owner       = { tag_key = { "@@assign" = "owner" } }
+      env         = { tag_key = { "@@assign" = "env" } }
       cost-centre = { tag_key = { "@@assign" = "cost-centre" } }
+      managed-by  = { tag_key = { "@@assign" = "managed-by" } }
     }
   })
 }
@@ -274,8 +276,11 @@ resource "aws_cloudtrail" "org" {
   include_global_service_events = true
 }
 
+# A configuration recorder is per-account — deploy this baseline in every account
+# (e.g. via the account-baseline module). Aggregate org-wide findings separately
+# with an aws_config_configuration_aggregator in the audit/log-archive account.
 resource "aws_config_configuration_recorder" "this" {
-  name     = "org-config"
+  name     = "account-config"
   role_arn = aws_iam_role.config.arn
   recording_group {
     all_supported = true

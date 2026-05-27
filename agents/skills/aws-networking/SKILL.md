@@ -114,7 +114,7 @@ resource "aws_vpc_security_group_egress_rule" "app_all_out" {
 Never open management or database ports to the world. Trivy (`AVD-AWS-0107`) and tflint (`aws_security_group_*`) flag `0.0.0.0/0` on sensitive ports — keep these checks in CI:
 
 ```hcl
-# ✗ DON'T — flagged by Trivy/tflint, will fail the pipeline:
+# DON'T — flagged by Trivy/tflint, will fail the pipeline:
 resource "aws_vpc_security_group_ingress_rule" "ssh_world" {
   security_group_id = aws_security_group.app.id
   cidr_ipv4         = "0.0.0.0/0"   # SSH from anywhere

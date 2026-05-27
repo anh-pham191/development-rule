@@ -173,7 +173,7 @@ resource "aws_synthetics_canary" "checkout" {
   name                 = "checkout-path"
   artifact_s3_location = "s3://${aws_s3_bucket.canary.id}/checkout"
   execution_role_arn   = aws_iam_role.canary.arn
-  runtime_version      = "syn-nodejs-puppeteer-9.0"
+  runtime_version      = "syn-nodejs-puppeteer-15.0" # use the latest supported runtime — AWS deprecates old ones
   handler              = "checkout.handler"
   schedule { expression = "rate(5 minutes)" }   # probe the key path continuously
 }
