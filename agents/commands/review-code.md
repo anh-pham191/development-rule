@@ -15,6 +15,7 @@ When delegating, pass the subagent:
 - A summary of what was changed (file list, one-line each).
 - The acceptance criteria, extracted from the ticket.
 - Any non-obvious context the reviewer should know (e.g. *"the ticket's AC 3 is partially deferred to a follow-up — see your ticket system comment X"*).
+- The review cycle number. Review is capped at two cycles (see [Review Cycle Limit](../../knowledge/philosophy/code-review.md#review-cycle-limit)); for cycle 3 or later, also pass the reason the extra cycle is justified.
 
 If delegation is not practical (e.g. the user has asked for a specific, quick review in the current chat), perform the review in-line using the same checklist below.
 

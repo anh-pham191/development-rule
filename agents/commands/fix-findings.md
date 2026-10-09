@@ -30,12 +30,10 @@ Present the classification to the user **before** making any file changes for th
 
 ### 2. Apply fixes by severity
 
-Work through Critical findings first, then High, Medium, Low.
+Work through Critical findings first, then High, Medium, Low — and fix **all** of them. Review is capped at two cycles (see [Review Cycle Limit](../../knowledge/philosophy/code-review.md#review-cycle-limit)), so every pass must leave nothing behind; minor findings left over are what force a third cycle.
 
-- **Critical** — must be resolved before the next review pass. These block the ticket.
-- **High** — should be resolved; if pushing back, state the reasoning explicitly.
-- **Medium** — consider each; respond to each (fix, push back with reasoning, defer with follow-up note).
-- **Low** — acknowledge; fix if easy; defer otherwise.
+- **Critical, High, Medium, Low** — fix each one. Severity sets the order, not whether it gets fixed.
+- **Push back or defer** only with the reasoning recorded and the user's agreement (step 1) — never as a way to skip a minor fix.
 
 Each fix should be **minimal and targeted**:
 
@@ -43,42 +41,52 @@ Each fix should be **minimal and targeted**:
 - Don't refactor adjacent code while you're there; that becomes its own ticket.
 - Don't introduce new cross-cutting concerns — a finding about a missing cross-link in document A is not an invitation to audit cross-links across the whole repo.
 
-### 3. Test-modification discipline
+### 3. Add a regression test per fix
 
-If addressing a finding would require modifying a test, stop. Test changes need explicit user approval — see [`agents/skills/agent-safety/SKILL.md`](../skills/agent-safety/SKILL.md). Surface the tension to the user:
+Every fix that changes behaviour gets a **new** regression test: one that fails without the fix and passes with it. Write the test first where practical, watch it fail, then apply the fix. This proves the fix works and stops it regressing in the next cycle.
+
+Where a finding has no executable behaviour to test (a typo in prose, a comment, a documentation link), skip the test and say so in the fix report.
+
+### 4. Test-modification discipline
+
+Adding new regression tests is expected. *Modifying* an existing test is not: if addressing a finding would require changing an existing test, stop. Test changes need explicit user approval — see [`agents/skills/agent-safety/SKILL.md`](../skills/agent-safety/SKILL.md). Surface the tension to the user:
 
 - State the finding.
 - State what test would need to change.
 - Explain why the code-side fix alone is insufficient.
 - Wait for direction.
 
-### 4. Verify
+### 5. Verify
 
 After each fix, re-read the affected section and confirm the fix does what it says. For documentation changes, walk the cross-links. For code changes, mentally trace through the logic.
 
 If the work is in a directory that has automated checks (lint, format, tests), run them. Most of this repository is plain markdown — the verification is reading and cross-link walking.
 
-### 5. Report back
+### 6. Report back
 
 Post a **fix-report comment** on the ticket summarising the pass:
 
 > **Review-pass response — [pass number]**
 >
-> | Severity | Raised | Fixed | Pushed back | Deferred | Clarifying |
-> |----------|--------|-------|-------------|----------|------------|
-> | Critical | n      | n     | n           | n        | n          |
-> | High     | n      | n     | n           | n        | n          |
-> | Medium   | n      | n     | n           | n        | n          |
-> | Low      | n      | n     | n           | n        | n          |
+> | Severity | Raised | Fixed | Regression tests added | Pushed back | Deferred | Clarifying |
+> |----------|--------|-------|------------------------|-------------|----------|------------|
+> | Critical | n      | n     | n                      | n           | n        | n          |
+> | High     | n      | n     | n                      | n           | n        | n          |
+> | Medium   | n      | n     | n                      | n           | n        | n          |
+> | Low      | n      | n     | n                      | n           | n        | n          |
 >
 > **Notes:**
+> - `[For each fix without a regression test: which, and why no test applies]`
 > - `[For each pushed-back finding: which, why, awaiting decision]`
 > - `[For each deferred finding: which, follow-up ticket reference if created]`
 > - `[For each clarifying finding: which, question posed]`
 >
-> **Next step:** `[/review-code for another pass / ready for /commit / awaiting user decision on Xs]`
+> **Next step:** `[/review-code for cycle 2 / ready for /commit / extra cycle requested because … / awaiting user decision on Xs]`
 
-Then recommend the next command to the user: another `/review-code` pass if Critical or High findings were resolved, or `/commit` if all significant findings are addressed and the user has signalled the work is done.
+Then recommend the next command to the user:
+
+- **After cycle 1** — `/review-code` for the second and final cycle.
+- **After cycle 2** — `/commit`. Recommend a third cycle only when the issue is genuinely big (e.g. cycle 2 raised a Critical finding, or a fix needed a substantial redesign), and state the reason.
 
 ## Rules
 
@@ -86,6 +94,8 @@ Then recommend the next command to the user: another `/review-code` pass if Crit
 - Do NOT modify tests without explicit user approval.
 - Do NOT silently disagree with a finding — either fix it or document the pushback on your ticket system.
 - Do NOT bundle unrelated improvements with fixes — scope discipline persists.
+- DO fix every finding, whatever its severity, unless the user has agreed to a pushback or deferral.
+- DO add a regression test for every fix that changes behaviour.
 - DO apply the minimal change that resolves each finding.
 - DO re-run cross-link checks and any automated verification after changes.
 - All written outputs use NZ English.

@@ -411,6 +411,21 @@ Each pull request SHOULD do one thing. Signs a change should be split:
 
 Use judgment rather than rigid line counts. Generated code (migrations, protobuf), tests, and configuration changes have different review characteristics than hand-written production code.
 
+### Review Cycle Limit
+
+Agent review of a change SHOULD finish in **at most two cycles**: review → fix everything → review → fix everything → done. Open-ended review loops cost more than they catch; by the third pass reviewers are mostly finding new things to say rather than new things that matter.
+
+The limit only works if every fix pass is complete. After each review cycle, the author:
+
+- MUST fix **every** finding — Critical, High, Medium and Low alike — rather than triaging the minor ones away. Leftover minor findings are what drag a change into a third cycle.
+- MUST add a regression test for each fix that changes behaviour: a test that fails without the fix and passes with it. This proves the fix and stops it quietly regressing in a later cycle or a later change. Adding a new test is expected here; *modifying* an existing test still needs explicit permission (see [`agent-safety`](../../agents/skills/agent-safety/SKILL.md)).
+- MAY skip the regression test only where there is no executable behaviour to test (a typo in prose, a comment, a broken documentation link). Say so in the fix report rather than skipping silently.
+- MAY push back on, or defer, a finding only with the reasoning recorded and the human's agreement — not as a way to avoid fixing it.
+
+**Cycle two is the final cycle.** The second review confirms the first round of fixes landed and looks for regressions they introduced; it is not an invitation to raise fresh low-value suggestions. Once its findings are fixed and tested, the change moves on to commit and human review.
+
+**Exceptions.** A third or later cycle MAY be run when the issue is genuinely big — for example, the second review finds a Critical issue, a fix required a substantial redesign, or the scope of the change grew. Judge each case on its merits and state the reason for the extra cycle when requesting it. "There might be something else" is not a reason.
+
 ---
 
 ## Connection to Workflow Loop
@@ -430,7 +445,7 @@ The following areas require further experience to establish firm guidance:
 
 - **Reviewing AI-assisted refactoring:** Large mechanical changes from agents present unique review challenges. How should reviewers efficiently verify correctness across many files?
 - **Agent review calibration:** What severity thresholds lead to the best outcomes? How critical should agent reviewers be?
-- **Dual-agent code/review loops:** The dynamics of agent-to-agent review cycles before human involvement need further documentation.
+- **Dual-agent code/review loops:** The dynamics of agent-to-agent review cycles before human involvement need further documentation. The current default is the two-cycle limit in [Review Cycle Limit](#review-cycle-limit).
 
 As we gain experience, this document will evolve to capture what works.
 
