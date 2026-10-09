@@ -80,7 +80,11 @@ This repository content is copied into consumer projects (consumer projects). Fo
 
 ## Review cycles
 
-If previous review comments exist on the ticket, determine the cycle number. On cycle 3 and later, shift to a **sign-off-weighted pass**: prioritise confirming that previously identified findings were addressed. Only raise new issues if they are clearly material — do not pile on fresh suggestions late in the cycle.
+If previous review comments exist on the ticket, determine the cycle number. Review is capped at **two cycles** by default — see [Review Cycle Limit](../../knowledge/philosophy/code-review.md#review-cycle-limit).
+
+- **Cycle 1** — full review across every relevant dimension.
+- **Cycle 2 (final)** — a **sign-off-weighted pass**: confirm every previous finding was fixed, that each behavioural fix has a regression test, and that the fixes introduced no regressions. Only raise new issues if they are clearly material — do not pile on fresh suggestions.
+- **Cycle 3 and later** — only when the parent agent has stated why an extra cycle is justified (e.g. a Critical finding in cycle 2, or a substantial redesign). Limit the review to that reason.
 
 ## Severity model
 
