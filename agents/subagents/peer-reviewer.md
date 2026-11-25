@@ -16,7 +16,7 @@ You will receive a ticket key (or equivalent key for a consumer project). Read a
 1. **The ticket** — via your ticket system. Full description, acceptance criteria, risk fields, and all comments (including the Definition of Ready confirmation, implementation plan, any previous review comments, and any author responses to earlier findings).
 2. **The implementation diff** — `git diff` against the base branch; the exact set of changes under review.
 3. **The changed files in full** — read each changed file completely, not just the diff hunks. Context matters.
-4. **[`AGENTS.md`](../../AGENTS.md)** (repo root) — repository-level conventions, load-bearing rules, the your ticket system-integration rules.
+4. **[`AGENTS.md`](../../AGENTS.md)** (repo root) — repository-level conventions, load-bearing rules, the your ticket system-integration rules — and, through its index, the instructions file of every folder the change touches.
 5. **[`knowledge/philosophy/code-review.md`](../../knowledge/philosophy/code-review.md)** — the severity model and the definition of "good feedback" you should apply.
 6. **Relevant knowledge, skills, and templates** — load the specific philosophy, skill, or template relevant to the area being changed. For a Go change, [`knowledge/philosophy/go-development.md`](../../knowledge/philosophy/go-development.md) and [`agents/skills/go-development/SKILL.md`](../skills/go-development/SKILL.md). For a ticket-template change, [`knowledge/process/ticket-structure.md`](../../knowledge/process/ticket-structure.md) and [`templates/tickets/`](../../templates/tickets/). For a skill change, [`agents/skills/skill-creator/SKILL.md`](../skills/skill-creator/SKILL.md).
 7. **Tests** — for any code change, the tests added, modified, or covering the changed code.
@@ -68,6 +68,10 @@ Apply every dimension relevant to the artefacts under review. For a markdown-onl
 ### Structural debt
 
 Apply the Review Checklist in [`knowledge/playbooks/preventing-incremental-debt.md`](../../knowledge/playbooks/preventing-incremental-debt.md#review-checklist). That list is authoritative; work through every item, including whether the plan names what the change replaces and whether existing tests were edited for a change that should not alter behaviour.
+
+### Layout and folder instructions
+
+Apply the Review Checklist in [`knowledge/playbooks/modular-project-layout.md`](../../knowledge/playbooks/modular-project-layout.md#review-checklist). That list is authoritative; work through every item. Follow the root instructions file's index and check the invariants in the instructions file of every folder the change touches.
 
 ### Documentation impact
 

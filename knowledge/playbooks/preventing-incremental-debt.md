@@ -11,6 +11,7 @@ Use it on any project where agents ship many small changes in sequence — a fea
 A strict per-change process (plan, test first, independent review, verification) stops bugs and security regressions. It does **not** stop structural debt, because every step only asks "is this change correct?", never "is the whole still simple?". Each change is added on top of the last; nothing in the loop removes anything. After dozens of correct changes the project can still end up with:
 
 - **Dead code from replaced features.** A later change supersedes an earlier one, the new path is built and tested, and the old command, handler or permission stays registered because no step asked for it to go. Unused entry points are also unused attack surface.
+- **Flat technical-layer folders.** `components/`, `logic/` and `utils/` each gain a file per change until they hold close to a hundred files and nobody can tell which belong to which feature. Splitting large files makes this worse, not better, unless the pieces land in feature folders.
 - **Very large files.** The entry point, the main view, the API layer and the validation module each grow past several thousand lines because every change adds "just one more" case to the file that already handles the area.
 - **Comments that read like a changelog.** "Change 12: … change 19: … change 23: …" piles up above code that now does something else. The history lives in the plan and version control; the comment goes stale.
 - **Several components for one concept.** A status indicator, then an activity indicator, then a badge variant, then another for a new screen — each added by a different change, each with its own spacing rules.
@@ -30,7 +31,7 @@ The plan states what existing behaviour, code path, setting, command or permissi
 
 ### 2. Put new code where it belongs, not where it is easiest
 
-Before adding to a file, check its size against the project's budget (see [Budgets](#budgets)). A file over budget does not take new feature code unless a reason for the exception is recorded (see [Budgets](#budgets)); otherwise extract the area being touched into its own module first (a pure refactor with tests unchanged), then add to the new module.
+Before adding to a file, check its size against the project's budget (see [Budgets](#budgets)). A file over budget does not take new feature code unless a reason for the exception is recorded (see [Budgets](#budgets)); otherwise extract the area being touched into its own module first (a [pure refactor](#debt-passes): test bodies unchanged), then add to the new module. New code lands in the feature folder that owns it, not in a technical-layer folder (see [Modular Project Layout](./modular-project-layout.md)).
 
 ### 3. Extend a concept; don't add a parallel one
 
@@ -50,7 +51,7 @@ Assert what a user or caller can observe — the text, the accessible role and n
 
 ### 7. Keep standing rules apart from per-change approvals
 
-The instructions every agent reads (e.g. `AGENTS.md`) hold only the standing rules: safety, the threat model, conventions, quality gates. A per-change approval lives with that change (its plan entry, ticket or pull request). Once the change has shipped, its approval is history and moves out of the start-up file.
+The instructions every agent reads (e.g. `AGENTS.md`) hold only the standing rules: safety, the threat model, conventions, quality gates. A per-change approval lives with that change (its plan entry, ticket or pull request). Once the change has shipped, its approval is history and moves out of the start-up file. Rules that apply to only one folder live in that folder's own short instructions file, indexed from the root, with each rule in exactly one place (see [Modular Project Layout](./modular-project-layout.md#2-per-folder-agent-instructions-only-where-they-fit)).
 
 ## Budgets
 
@@ -59,9 +60,11 @@ Set these at project start in the project's instructions and check them in revie
 | What | Budget | Over budget means |
 |------|--------|-------------------|
 | Source file | ~800 lines | Extract before adding more |
+| Folder | ~15–25 files, one responsibility | Split into sub-features |
 | Component or function | Fits on one screen | Split by responsibility |
 | Root application component | Wiring only: state, routing, composition | Move feature logic into feature modules or hooks |
-| Agent start-up instructions | A few pages | Move history and finished approvals out |
+| Agent start-up instructions | A few pages | Move history and finished approvals out; move folder-only rules to folder files |
+| Folder instructions file | ~20–40 lines | Keep only that folder's own rules |
 | Components per visual concept | One, with variants | Merge |
 
 Budgets are prompts to act, not hard failures. A file may exceed one for a stated reason; the reason is written down.
@@ -72,13 +75,13 @@ Every 10–15 changes, or before starting a large feature, run a debt pass. Keep
 
 1. **Audit** — independent agents list, with file and line references:
    - code, commands, permissions, settings and styles nothing reaches any more;
-   - files and components over budget;
+   - files, components and folders over budget, and flat technical-layer folders;
    - parallel implementations of one concept;
    - history-style comments;
    - tests that assert structure rather than behaviour;
-   - the size of the agent start-up instructions.
+   - the size of the agent start-up instructions, and rules duplicated across instruction files.
 2. **Rank** — the human picks what to pay down, by risk and by how often the area changes. Dead entry points and permissions go first: they are both debt and attack surface.
-3. **Pay down** — each item is its own change through the normal flow. A pure refactor keeps every existing test passing **without editing it**; that is what makes the refactor safe. Removing dead code may remove the tests that covered it, and says so. Rewriting a structure-coupled test into a behaviour test is its own change, kept separate from any refactor.
+3. **Pay down** — each item is its own change through the normal flow. A pure refactor keeps every existing test passing **without changes to test bodies**; that is what makes the refactor safe. The one exception is a file move: updating import paths, or moving a test file next to its code, is allowed when the plan and the report name it as an **import-path-only test edit**. Approving the move approves those edits; any other test edit needs permission. Removing dead code may remove the tests that covered it, and says so. Rewriting a structure-coupled test into a behaviour test is its own change, kept separate from any refactor.
 
 ## Review Checklist
 
@@ -89,8 +92,9 @@ Reviewers add these questions to every change:
 - Does the change add a second implementation of an existing concept?
 - Do new styles replace old rules, or override them?
 - Do new or edited comments describe the present only?
-- Do new tests assert behaviour? Were existing tests edited for a change that should not alter behaviour?
-- Did the change add to the agent start-up instructions? Does it belong there permanently?
+- Do new tests assert behaviour? Were existing tests edited for a change that should not alter behaviour (beyond named import-path-only edits for a file move)?
+- Did the change add to the agent start-up instructions? Does it belong there permanently, or in a folder's instructions file?
+- Does the change pass the layout checks in [Modular Project Layout](./modular-project-layout.md#review-checklist)?
 
 ## Anti-Patterns
 
@@ -102,6 +106,7 @@ Reviewers add these questions to every change:
 
 ## Related Documents
 
+- [Modular Project Layout](./modular-project-layout.md) — feature folders and per-folder agent instructions
 - [Request-to-Implementation Flow](../process/request-to-implementation-flow.md) — the per-change flow these rules plug into
 - [Code Quality](../../agents/skills/code-quality/SKILL.md) — readability principles at the function level
 - [Code Review Philosophy](../philosophy/code-review.md) — severity model for the review checklist

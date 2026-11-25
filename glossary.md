@@ -13,6 +13,8 @@ This glossary defines key terms used across toolbox documentation. Consistent te
 - [Context Asset](#context-asset)
 - [Debt Pass](#debt-pass)
 - [Definition of Done (DoD)](#definition-of-done-dod)
+- [Feature Folder](#feature-folder)
+- [Folder Instructions File](#folder-instructions-file)
 - [Hazard Analysis](#hazard-analysis)
 - [Structural Debt](#structural-debt)
 - [Workflow Loop](#workflow-loop)
@@ -107,7 +109,7 @@ Context assets are living documents that evolve with the systems they describe.
 
 ### Debt Pass
 
-A periodic, read-only-first audit of a project for [structural debt](#structural-debt) — unreachable code and permissions, files over budget, parallel implementations of one concept, history-style comments, structure-coupled tests — followed by paying down the items the human picks, each as its own change.
+A periodic, read-only-first audit of a project for [structural debt](#structural-debt) — unreachable code and permissions, files and folders over budget, flat technical-layer folders, rules duplicated across instruction files, parallel implementations of one concept, history-style comments, structure-coupled tests — followed by paying down the items the human picks, each as its own change.
 
 **Related**: [Preventing Incremental Debt](knowledge/playbooks/preventing-incremental-debt.md#debt-passes)
 
@@ -134,6 +136,24 @@ In agentic development, the Definition of Done explicitly includes documentation
 
 ---
 
+## F
+
+### Feature Folder
+
+A folder that holds everything for one feature or domain — its components, logic, hooks, types and tests — so that changing the feature means working in one place. The alternative is a technical-layer layout (`components/`, `logic/`, `utils/`), which scatters each feature across folders that grow a file per change.
+
+**Related**: [Modular Project Layout](knowledge/playbooks/modular-project-layout.md#1-feature-folders-from-day-one)
+
+---
+
+### Folder Instructions File
+
+A short agent instructions file, such as `AGENTS.md`, placed in a folder that has rules of its own: what the folder owns, the invariants that apply there, and its traps. Folders with nothing special have none. The root instructions file indexes every folder file, and each rule lives in exactly one file.
+
+**Related**: [Modular Project Layout](knowledge/playbooks/modular-project-layout.md#2-per-folder-agent-instructions-only-where-they-fit); see also [Context Asset](#context-asset)
+
+---
+
 ## H
 
 ### Hazard Analysis
@@ -154,7 +174,7 @@ Hazard analysis addresses:
 
 ### Structural Debt
 
-Debt in the shape of a codebase rather than in its behaviour: code nothing reaches, oversized files, duplicated concepts, layered overrides, stale comments and tests coupled to structure. It accumulates even when every change is correct and reviewed, because per-change review asks whether the change is right, not whether the whole is still simple.
+Debt in the shape of a codebase rather than in its behaviour: code nothing reaches, oversized files, flat technical-layer folders, duplicated concepts, layered overrides, stale comments and tests coupled to structure. It accumulates even when every change is correct and reviewed, because per-change review asks whether the change is right, not whether the whole is still simple.
 
 **Related**: [Preventing Incremental Debt](knowledge/playbooks/preventing-incremental-debt.md); see also [Debt Pass](#debt-pass)
 
