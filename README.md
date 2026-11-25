@@ -27,6 +27,7 @@ This repository separates **Knowledge** (for humans) from **Agents** (for AI).
 | File | Use |
 |------|-----|
 | [`templates/commit-message.txt`](./templates/commit-message.txt) | Commit-message scaffold |
+| [`templates/workspace-instructions.md`](./templates/workspace-instructions.md) | Short pointer file for a folder of projects; symlink it as `CLAUDE.md` in the parent folder so every project below inherits these rules |
 
 ### Reference
 
