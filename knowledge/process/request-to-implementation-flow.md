@@ -34,7 +34,7 @@ user request
 Before asking the user anything, draft a plan that covers what you currently believe the request entails:
 
 - The intended outcome and success criteria
-- The surfaces touched (files, modules, services, data)
+- The surfaces touched (files, modules, services, data), including which feature folder owns new code and which folder instructions files apply
 - Assumptions you are making
 - Open questions and unknowns
 - Risks, edge cases, and failure modes
@@ -71,6 +71,7 @@ The plan must:
 - Reference the tests that prove correctness
 - Name the verification commands that prove completion
 - Name what the change replaces or supersedes, and include removing it (or record an explicit follow-up) — see [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md)
+- Place new code in the owning feature folder and new folder-specific rules in that folder's instructions file; on a new project, lay out feature folders from the first change — see [Modular Project Layout](../playbooks/modular-project-layout.md)
 
 ### 4. Review the Plan (Loop)
 
@@ -88,7 +89,7 @@ Repeat until the plan is robust. The cost of a planning round is small; the cost
 
 Only now does code get written. Dispatch the plan via [`superpowers:subagent-driven-development`](../../agents/skills/) and [`superpowers:executing-plans`](../../agents/skills/). The orchestrator:
 
-- Hands each subagent a self-contained brief from the plan
+- Hands each subagent a self-contained brief from the plan, naming the instructions files of the folders it will edit
 - Verifies subagent output against the named acceptance commands
 - Does not declare completion without running [`superpowers:verification-before-completion`](../../agents/skills/)
 
@@ -115,3 +116,4 @@ In every other case, follow the flow.
 - [Definition of Ready](./definition-of-ready.md) — readiness gate that this flow feeds into
 - [Agentic Development Philosophy](../philosophy/agentic-development.md) — the framing this flow operationalises
 - [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md) — keeping a long run of small changes structurally clean
+- [Modular Project Layout](../playbooks/modular-project-layout.md) — feature folders and per-folder agent instructions

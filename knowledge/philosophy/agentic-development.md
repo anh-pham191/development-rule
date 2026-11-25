@@ -86,3 +86,4 @@ Work is incomplete until knowledge is captured. Documentation must evolve with t
 
 - [Code Review Philosophy](code-review.md): Principles for human and agent review
 - [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md): keeping a long run of small changes structurally clean
+- [Modular Project Layout](../playbooks/modular-project-layout.md): feature folders and per-folder agent instructions

@@ -5,7 +5,8 @@ description: >
   Use when: (1) Writing new code, (2) Reviewing code, (3) Refactoring existing code,
   (4) Discussing best practices, (5) Improving code readability. Applies to any
   programming language and promotes code that is easy to understand and maintain,
-  including keeping it free of structural debt (removing superseded code, small files).
+  including keeping it free of structural debt (removing superseded code, small files,
+  feature folders).
 ---
 
 # Code Quality
@@ -168,3 +169,9 @@ When new code supersedes old code, remove the old path in the same change: the f
 A file that keeps growing is a sign several responsibilities share it. Before adding to a large file, extract the area you are touching. One concept on screen (a badge, a status mark, a row) should come from one component with variants, not several look-alikes.
 
 See [Preventing Incremental Debt](../../../knowledge/playbooks/preventing-incremental-debt.md) for budgets and periodic debt passes.
+
+## 11. Organise by Feature, Not by Layer
+
+Inside one codebase, group code by feature: each feature folder holds its components, logic and tests together, with a small `shared/` for what several features genuinely use. Avoid top-level `components/`, `utils/` and `logic/` folders that grow a file per change. Split a folder when it passes its budget or loses a single responsibility. Where a folder has rules of its own, it gets a short agent instructions file (such as `AGENTS.md`) indexed from the root; each rule lives in one file only.
+
+See [Modular Project Layout](../../../knowledge/playbooks/modular-project-layout.md).

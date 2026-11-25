@@ -242,6 +242,7 @@ See also: Data Security Philosophy
 - Will future developers understand this code?
 - Are there appropriate comments where needed?
 - Does the change remove what it replaces, stay within file-size budgets and avoid a second implementation of an existing concept? See [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md#review-checklist).
+- Is new code in the feature folder that owns it, and does each new folder-specific rule live in one instructions file only? See [Modular Project Layout](../playbooks/modular-project-layout.md#review-checklist).
 
 ### Tests
 
@@ -460,3 +461,4 @@ As we gain experience, this document will evolve to capture what works.
 - API Design Philosophy (`knowledge/philosophy/api-design.md`)
 - Agentic Development Philosophy (`knowledge/philosophy/agentic-development.md`)
 - Preventing Incremental Debt (`knowledge/playbooks/preventing-incremental-debt.md`)
+- Modular Project Layout (`knowledge/playbooks/modular-project-layout.md`)
