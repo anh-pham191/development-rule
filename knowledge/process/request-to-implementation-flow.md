@@ -70,6 +70,7 @@ The plan must:
 - Identify which tasks are parallelisable and which are sequential
 - Reference the tests that prove correctness
 - Name the verification commands that prove completion
+- Name what the change replaces or supersedes, and include removing it (or record an explicit follow-up) — see [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md)
 
 ### 4. Review the Plan (Loop)
 
@@ -113,3 +114,4 @@ In every other case, follow the flow.
 
 - [Definition of Ready](./definition-of-ready.md) — readiness gate that this flow feeds into
 - [Agentic Development Philosophy](../philosophy/agentic-development.md) — the framing this flow operationalises
+- [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md) — keeping a long run of small changes structurally clean

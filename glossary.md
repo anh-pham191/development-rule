@@ -11,8 +11,10 @@ This glossary defines key terms used across toolbox documentation. Consistent te
 - [Agent](#agent)
 - [Agentic Workflow Loop](#agentic-workflow-loop)
 - [Context Asset](#context-asset)
+- [Debt Pass](#debt-pass)
 - [Definition of Done (DoD)](#definition-of-done-dod)
 - [Hazard Analysis](#hazard-analysis)
+- [Structural Debt](#structural-debt)
 - [Workflow Loop](#workflow-loop)
 
 ---
@@ -103,6 +105,14 @@ Context assets are living documents that evolve with the systems they describe.
 
 ## D
 
+### Debt Pass
+
+A periodic, read-only-first audit of a project for [structural debt](#structural-debt) — unreachable code and permissions, files over budget, parallel implementations of one concept, history-style comments, structure-coupled tests — followed by paying down the items the human picks, each as its own change.
+
+**Related**: [Preventing Incremental Debt](knowledge/playbooks/preventing-incremental-debt.md#debt-passes)
+
+---
+
 ### Definition of Done (DoD)
 
 A shared understanding of what it means for work to be complete. Unlike acceptance criteria (which are specific to a task), the Definition of Done is a team-wide standard that applies to all work.
@@ -137,6 +147,16 @@ Hazard analysis addresses:
 - What safeguards will prevent or catch these issues?
 
 **Related**: [Agentic Development Philosophy](knowledge/philosophy/agentic-development.md), principle 8 (Hazard Awareness)
+
+---
+
+## S
+
+### Structural Debt
+
+Debt in the shape of a codebase rather than in its behaviour: code nothing reaches, oversized files, duplicated concepts, layered overrides, stale comments and tests coupled to structure. It accumulates even when every change is correct and reviewed, because per-change review asks whether the change is right, not whether the whole is still simple.
+
+**Related**: [Preventing Incremental Debt](knowledge/playbooks/preventing-incremental-debt.md); see also [Debt Pass](#debt-pass)
 
 ---
 

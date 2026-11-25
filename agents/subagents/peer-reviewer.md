@@ -65,6 +65,10 @@ Apply every dimension relevant to the artefacts under review. For a markdown-onl
 - Do tests verify behaviour, not merely exercise code?
 - Have any tests been modified? If so, is the modification justified, and does it constitute a change to the specification? (Tests are specifications; modifying them changes what the system promises to do.)
 
+### Structural debt
+
+Apply the Review Checklist in [`knowledge/playbooks/preventing-incremental-debt.md`](../../knowledge/playbooks/preventing-incremental-debt.md#review-checklist). That list is authoritative; work through every item, including whether the plan names what the change replaces and whether existing tests were edited for a change that should not alter behaviour.
+
 ### Documentation impact
 
 - Should [`AGENTS.md`](../../AGENTS.md), [`README.md`](../../README.md), or [`glossary.md`](../../glossary.md) be updated as part of this change?
