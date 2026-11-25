@@ -4,7 +4,8 @@ description: >
   Language-agnostic code readability principles for writing clean, maintainable code.
   Use when: (1) Writing new code, (2) Reviewing code, (3) Refactoring existing code,
   (4) Discussing best practices, (5) Improving code readability. Applies to any
-  programming language and promotes code that is easy to understand and maintain.
+  programming language and promotes code that is easy to understand and maintain,
+  including keeping it free of structural debt (removing superseded code, small files).
 ---
 
 # Code Quality
@@ -81,6 +82,8 @@ due_date = due_date.add_days(7)
 
 Comment non-obvious trade-offs, workarounds, and business rules.
 
+Comments describe the code as it is now. Do not record which change, ticket or version introduced or altered it ("Change 12: … then change 19: …"); that history belongs in version control and the plan. When behaviour changes, rewrite the comment instead of appending to it.
+
 ## 6. Avoid Deep Nesting
 
 Multiple levels of indentation make code hard to follow.
@@ -134,7 +137,7 @@ def get_user(id):
         raise DatabaseError(f"Database unavailable: {e}")
 ```
 
-Clear error handling makes behavior predictable.
+Clear error handling makes behaviour predictable.
 
 ## 8. Don't Be Clever
 
@@ -154,4 +157,14 @@ for item in items:
         result.append(processed)
 ```
 
-Optimize for human understanding first, then for elegance.
+Optimise for human understanding first, then for elegance.
+
+## 9. Delete What You Replace
+
+When new code supersedes old code, remove the old path in the same change: the function, the command, the setting, the permission, the style rule. Code that nothing reaches still has to be read, kept compiling and kept secure.
+
+## 10. Keep Files and Concepts Small
+
+A file that keeps growing is a sign several responsibilities share it. Before adding to a large file, extract the area you are touching. One concept on screen (a badge, a status mark, a row) should come from one component with variants, not several look-alikes.
+
+See [Preventing Incremental Debt](../../../knowledge/playbooks/preventing-incremental-debt.md) for budgets and periodic debt passes.

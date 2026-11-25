@@ -101,3 +101,4 @@ This repository follows the convention documented in [`knowledge/process/git-com
 - [`knowledge/process/request-to-implementation-flow.md`](./knowledge/process/request-to-implementation-flow.md) — mandatory flow from user request to implementation (plan → interrogate → plan with superpowers → review → subagent execution).
 - [`knowledge/philosophy/agentic-development.md`](./knowledge/philosophy/agentic-development.md) — the framing principles for agent-assisted work.
 - [`knowledge/philosophy/code-review.md`](./knowledge/philosophy/code-review.md) — review philosophy and the four-level severity model.
+- [`knowledge/playbooks/preventing-incremental-debt.md`](./knowledge/playbooks/preventing-incremental-debt.md) — keep a project clean as it grows one approved change at a time (remove what a change replaces, size budgets, debt passes).

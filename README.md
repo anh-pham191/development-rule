@@ -14,7 +14,7 @@ This repository separates **Knowledge** (for humans) from **Agents** (for AI).
 |-----------|---------|
 | [`knowledge/philosophy/`](./knowledge/philosophy/) | "What do we value?" — agentic development, code review, API design, technology selection, service-oriented architecture, per-language principles (Go, PHP, Python, Rust, R, C, JavaScript, TypeScript, Node.js, React, Vue), and infrastructure-as-code (Terraform/OpenTofu, AWS foundations, networking, compute, data, observability & cost) |
 | [`knowledge/process/`](./knowledge/process/) | "How do we do this activity?" — git commit conventions, the Definition of Ready |
-| [`knowledge/playbooks/`](./knowledge/playbooks/) | "How do we handle this situation?" — workflow-loop prompts |
+| [`knowledge/playbooks/`](./knowledge/playbooks/) | "How do we handle this situation?" — workflow-loop prompts, preventing incremental debt in long agent-built projects |
 
 ### Agents — operational configuration for AI
 

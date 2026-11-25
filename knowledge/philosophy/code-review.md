@@ -241,6 +241,7 @@ See also: Data Security Philosophy
 - Is complexity appropriate, or could it be simplified?
 - Will future developers understand this code?
 - Are there appropriate comments where needed?
+- Does the change remove what it replaces, stay within file-size budgets and avoid a second implementation of an existing concept? See [Preventing Incremental Debt](../playbooks/preventing-incremental-debt.md#review-checklist).
 
 ### Tests
 
@@ -458,3 +459,4 @@ As we gain experience, this document will evolve to capture what works.
 - JavaScript Development Philosophy (`knowledge/philosophy/javascript-development.md`)
 - API Design Philosophy (`knowledge/philosophy/api-design.md`)
 - Agentic Development Philosophy (`knowledge/philosophy/agentic-development.md`)
+- Preventing Incremental Debt (`knowledge/playbooks/preventing-incremental-debt.md`)
